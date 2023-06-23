@@ -1,0 +1,32 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Registrar departamento {% endblock 'title' %}
+
+    {% block 'body' %}
+
+    <div class="grid-container">
+        <h1>Create departamentos</h1>
+
+        <form method="POST">
+        {% csrf_token %}
+            <h3>Datos Empleado</h3>
+                <div>
+                    {{ form.nombre }}
+                </div>
+                <div>
+                    {{ form.apellidos  }}
+                </div>
+
+            <h3>Datos del departamento </h3>
+                <div>
+                    {{ form.departamento }}
+                </div>
+                <div>
+                    {{ form.shortname  }}
+                </div>
+
+            <button class="button success" type="submit">Save</button>
+        </form>
+    </div>
+
+    {% endblock 'body' %}

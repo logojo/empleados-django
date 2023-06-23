@@ -1,0 +1,17 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Listado de Empleados {% endblock 'title' %}
+
+    {% block 'body' %}
+
+    <div class="grid-container">
+      <h1>Update</h1>
+
+      <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+          {{ form.as_p }}
+          <button class="button success" type="submit">Save</button>
+      </form>
+    </div>
+
+    {% endblock 'body' %}

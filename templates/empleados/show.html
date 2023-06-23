@@ -1,0 +1,41 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Listado de Empleados {% endblock 'title' %}
+
+    {% block 'body' %}
+        <div class="grid-container">
+
+            <div class="card" style="width: 500px; margin-top: 20px;">
+                <div class="card-divider">
+                      <!-- Se esta mostrando el registro encontrado a traves del nombre del modelo en minisculas -->
+                      {{ empleado }}
+                   
+                </div>
+                
+                {% if empleado.image %}
+                    <img src="{{ empleado.image.url }}" alt="">
+                {% else %}
+                    <img src="https://llerena.org/wp-content/uploads/2017/11/imagen-no-disponible.jpg" alt="">
+                {% endif %}
+                    
+                <div class="card-section">
+                    
+                    <h1>{{ titulo }}</h1>
+
+                    <h6>{{ empleado.first_name }} {{ empleado.last_name }}</h6>
+                    <h6>{{ empleado.get_job_display }}</h6>  <!-- nos recupera el valor de un diccionario(arreglo) -->
+                    <h6>{{ empleado.departamento.name }}</h6>
+
+                    <h6>{{ empleado.hoja_vida }}</h6>
+                    <p><span class="label">habilidades</span></p>
+                    <ul class="vertical menu">
+                        
+                        {% for h in  empleado.Habilidades.all %} <!-- recuperando de arreglo de  habilidades  -->
+                            <li>{{ h.habilidad }}</li>                            
+                        {% endfor %}
+                            
+                    </ul>
+                </div>
+              </div>
+        </div>
+    {% endblock 'body' %}

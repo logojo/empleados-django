@@ -1,0 +1,34 @@
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Departamentos {% endblock 'title' %}
+
+    {% block 'body' %}
+
+        <h1>Lista de empleados por departamento</h1>
+        
+        <div class="grid-x">
+            <div class="cell">
+                <table class="hover">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Firstname</th>
+                        <th>Lastname</th>                
+                        <th>Departamento</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for employee in object_list %}
+                    <tr>
+                        <td>{{ employee.id }}</td>
+                        <td>{{ employee.first_name }}</td>
+                        <td>{{ employee.last_name }}</td>
+                        <td>{{ employee.departamento.name }}</td>
+                    </tr>
+                    {% endfor %}      
+                </tbody>
+                </table>
+            </div>
+        </div>
+
+    {% endblock 'body' %}

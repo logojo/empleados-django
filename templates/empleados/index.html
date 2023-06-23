@@ -1,0 +1,84 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Listado de Empleados {% endblock 'title' %}
+
+    {% block 'body' %}
+    <div class="grid-container">
+      <div class="grid-x">
+        <h1 class="cell">Listado de empleados</h1>
+      </div>
+      
+       <form method="GET" class="cell grid-x">
+        {% csrf_token %}
+            <div class="cell large-7">
+                <input type="text" name="kword" placeholder="type name of employee"/> 
+            </div>
+            <div class="cell large-2" style="margin-left: 10px;">
+                <button type="submit" class="success button">Buscar</button>
+            </div>
+        </form>
+
+        <div>
+          <a class="button primary" href="{% url 'employee_app:store' %}">Nuevo Empleado</a>
+        </div>
+   
+
+      <div class="cell">
+        <table class="hover">
+          <thead>
+             <tr>
+                <th>Id</th>
+                <th>Firstname</th>
+                <th>Lastname</th>                
+                <th>Departamento</th>
+                <th></th>
+             </tr>
+          </thead>
+          <tbody>
+            {% for employee in employees %}
+            <tr>
+                <td>{{ employee.id }}</td>
+                <td>{{ employee.first_name }}</td>
+                <td>{{ employee.last_name }}</td>
+                <td>{{ employee.departamento.name }}</td>
+                <td>
+                    <a class="button primary" href="{% url 'employee_app:show' employee.id %}">ver</a>
+                    <a class="button secondary" href="{% url 'employee_app:update' employee.id %}">editar</a>
+                    <a class="button warning" href="{% url 'employee_app:destroy' employee.id %}">eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}      
+          </tbody>
+        </table>
+      </div>
+      <div class="cell">
+        {% if is_paginated %}
+         <nav aria-label="Pagination">
+           <ul class="pagination text-center">
+            
+            {% if page_obj.has_previous  %}
+                <li class="pagination-previous"><a href="?page={{page_obj.previous_page_number}}">Previous</a></li>
+            {% endif %}
+                
+            
+            {% for page in paginator.page_range  %}
+                {% if page == page_obj.number  %} 
+                  <li class="current"><span class="show-for-sr">You're on page</span>{{ page }}</li>
+                {% else %}
+                  <li><a href="?page={{page}}">{{ page }}</a></li>
+                {% endif %}  
+            {% endfor %}
+                
+           
+            {% if page_obj.has_next  %}
+             <li class="pagination-next"><a href="?page={{page_obj.next_page_number}}" aria-label="Next page">Next</a></li>
+            {% endif %}
+             
+           </ul>
+         </nav>
+        {% endif %}
+            
+      </div>
+    </div>
+
+    {% endblock 'body' %}

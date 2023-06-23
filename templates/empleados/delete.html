@@ -1,0 +1,18 @@
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} DeleteEmpleados {% endblock 'title' %}
+
+    {% block 'body' %}
+       <div class="grid-container" style="margin-top: 10px;">
+        <form method="POST">  
+            {% csrf_token %}   
+            <div class="callout alert" data-closable="slide-out-right">
+                <h5>Delete employee.</h5>
+                <p>Are you sure you want to delete to {{object.full_name }}? </p>
+                <button class="close-button" aria-label="Dismiss alert" type="submit" data-close>
+                <span aria-hidden="true">delete</span>
+                </button>
+            </div>
+        </form>
+       </div>
+
+    {% endblock 'body' %}

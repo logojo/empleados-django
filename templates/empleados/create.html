@@ -1,0 +1,18 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Listado de Empleados {% endblock 'title' %}
+
+    {% block 'body' %}
+
+    <div class="grid-container">
+        <h1>Create</h1>
+        <!-- Esta variable crea un formulario basado en los campos que establecimos en la variable fields del view -->
+        <!-- as_p alinea los campos de manera vertical -->
+
+        <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+            {{ form.as_p }}
+            <button class="button success" type="submit">Save</button>
+        </form>
+    </div>
+    {% endblock 'body' %}

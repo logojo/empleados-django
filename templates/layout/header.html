@@ -1,0 +1,19 @@
+<header>
+  <div class="top-bar">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Empleados</li>
+        <li><a href="/">Inicio</a></li>
+        <li><a href="{% url 'employee_app:empleados' %}">Empleados</a></li>
+        <li><a href="{% url 'department_app:departments' %}">Departamentos</a></li>
+        <li><a href="/admin">Administrar</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Buscar..."></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>
+</header>

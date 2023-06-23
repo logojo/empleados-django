@@ -1,0 +1,33 @@
+
+{% extends 'layout/layout.html' %}
+    {% block 'title' %} Sistema Empleados {% endblock 'title' %}
+
+    {% block 'body' %}
+
+    {% include 'layout/caroussel.html' %}
+     
+        <!-- 
+            flex-box
+            <div class="grid-x grid-padding-x">
+            <div class="cell small-12 large-4">Cell 1</div>
+            <div class="cell small-12 large-4">Cell 2</div>
+            <div class="cell small-12 large-4">Cell 3</div>
+        </div> -->
+        
+
+        <div class="grid-x align-center">
+            <h1 class="cell large-8" style="font-size: 30px; text-align: center;">Bienvenido al sistema de registro de empleados</h1>
+
+            <div class="cell large-7">
+                <div class="callout success">
+                    <h5>This is a secondary callout</h5>
+                    <p>It has an easy to override visual style, and is appropriately subdued.</p>
+                    <a href="{% url 'employee_app:empleados' %}">Ver empleados</a>
+                  </div>
+            </div>
+        </div>
+
+    {% endblock 'body' %}
+
+
+   
